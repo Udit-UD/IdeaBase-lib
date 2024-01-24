@@ -1,14 +1,28 @@
 {
-  "name": "ideabase",
+  "name": "ideaverse-lib",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"    
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Udit-UD/ideaverse-lib.git"
+  },
+  "keywords": [
+    "OpenAI",
+    "GeminiAI",
+    "Dalle",
+    "Whisper",
+    "AiAPI"
+  ],
+  "author": "TensorBlue",
+  "license": "MIT",
+  "bugs": {
+    "url": "git+https://github.com/Udit-UD/ideaverse-lib.git/issues"
+  },
+  "homepage": "git+https://github.com/Udit-UD/ideaverse-lib.gitb#readme",
   "type": "module",
   "dependencies": {
     "@google/generative-ai": "^0.1.3",

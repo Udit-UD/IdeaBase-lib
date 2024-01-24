@@ -31,8 +31,8 @@ class OpenAiTTs extends BaseModel{
             await fs.promises.writeFile(speechFile, buffer);
             return response.data;
         }
-        catch(e){
-            throw new Error(e);
+        catch(error){
+            throw new Error(`OpenAI API Error: ${error.response.status}`);
         }
     }
 

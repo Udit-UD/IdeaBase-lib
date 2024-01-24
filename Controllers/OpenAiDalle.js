@@ -27,8 +27,8 @@ class OpenAiDalle extends BaseModel{
             );
             return response.data;
         }
-        catch(e){
-            throw new Error(e);
+        catch(error){
+            throw new Error(`OpenAI API Error: ${error.response.status}`);
         }
     }
 

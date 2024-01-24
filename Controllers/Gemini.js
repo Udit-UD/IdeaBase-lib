@@ -27,8 +27,8 @@ class Gemini extends BaseModel{
             }
             
         }
-        catch(e){
-            throw new Error(e);
+        catch(error){
+            throw new Error(`Gemini API Error: ${error.response.status}`);
         }
     }
 }

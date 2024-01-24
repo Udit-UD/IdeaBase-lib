@@ -22,10 +22,15 @@ class OpenAiGPT3 extends BaseModel{
                     },
                 },
             );
+
+            if (!response.data || !response.data.choices || response.data.choices.length === 0) {
+                throw new Error("Invalid response format from OpenAI API");
+            }
+
             return response.data.choices[0].message.content;
         }
-        catch(e){
-            throw new Error(e);
+        catch(error){
+            throw new Error(`OpenAI API Error: ${error.response.status}`);
         }
     }
 
