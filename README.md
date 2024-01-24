@@ -2,14 +2,14 @@
 
 ### Introduction
 
-Ideaverse library can be installed using `npm` and used anywhere. The purpose of this library is promote seamless use of api across different companies. There is no need for the user to look up the documentation for implementing a single model but instead they just need to call the specific name of the model. We also aim to provide api access as bundles and optimise the usage of the users according to their chosen plans.
+Ideaverse library can be installed using `npm` and used anywhere. The purpose of this library is promote seamless use of api across different companies. There is no need for the user to look up the documentation for implementing a single model but instead, they just need to call the specific name of the model. We also aim to provide api access as bundles and optimise the usage of the users according to their chosen plans.
 
 For starters, this library will be a wrapper around existing libraires like `openai, claude, google gemini, huggingaface models, stabilty ai etc.` In the future, we are looking forward to hosting our own models and thereby including them in this package as well.
 
 ### Installation
-To install `ideaverse-lib` you need to use the given commmand, and the library will get installed in your machine.
+To effortlessly integrate `ideaverse-lib` into your development environment, simply execute the provided command. This will seamlessly install the library on your machine.
 ```
-npm i ideaverse-lib
+npm install ideaverse-lib
 ```
 
 ### Configuration
@@ -42,15 +42,15 @@ const API_KEY="***************************************************";
 
 const openAIGPT3 = new Models.OpenAiGPT3(API_KEY);
 const openAiTTS = new Models.OpenAiTTS(API_KEY);
-const openAiDalle = new Models.OpenAiDalle(API_KEY, 3, "512x512");      // You can change number of images and size of images.
+const openAiDalle = new Models.OpenAiDalle(API_KEY, 3, "512x512");  
 const openAiWhisper = new Models.OpenAiWhisper(API_KEY);
 
 
-<!-- The will model respond to your queries -->
+// The will model respond to your queries 
 async function testOpenAIGPT(){
 
     try{
-        const prompt = "Write a c++ program to find nth element in fibonacci sequence";        // Pass the required prompt
+        const prompt = "Write a c++ program to find nth element in fibonacci sequence";        
         const response = await openAIGPT3.generateResponse(prompt);
         console.log(response);
 
@@ -59,21 +59,21 @@ async function testOpenAIGPT(){
     }
 }
 
-<!-- The model will generate speech from the text -->
+// The model will generate speech from the text 
 async function testOpenAiTTS(){
     const text = "Hi, I am from TensorBlue!";
     try{
         const response = await openAiTTS.generateResponse(text);
-        console.log("Audio Generated successfully!");                   // It will convert text-to-speech
+        console.log("Audio Generated successfully!");                 
     }
     catch(e){
         console.log(e);
     }
 }
 
-<!-- The model will generate Images based on the prompt -->
+// The model will generate Images based on the prompt 
 async function testOpenAiDalle(){
-    const prompt = "Man dancing on sand";                                       // Update the prompt
+    const prompt = "Man dancing on sand";                                      
     try{
         const response = await openAiDalle.generateResponse(prompt);
         <!-- generateResponse(prompt, 3, 1024x1024), you can modify the parameters like this -->
@@ -85,10 +85,10 @@ async function testOpenAiDalle(){
 }
 
 
-<!-- the model will convert speech to text -->
+//The model will convert speech to text 
 async function testOpenAiWhisper(){
     try{
-        const audioFilePath = "./Demo.mp3";                                 // pass the path of your file 
+        const audioFilePath = "./Demo.mp3";                                
         
         const audio = fs.createReadStream(audioFilePath);
         const response = await openAiWhisper.generateResponse(audio);
@@ -103,7 +103,7 @@ async function testOpenAiWhisper(){
 const GeminiKey = "****************************************";
 const gemini = new Models.Gemini(GeminiKey);
 
-<!-- This model uses Gemini API to respond the queries -->
+// This model uses Gemini API to respond the queries 
 async function testGemini(){
     const prompt = "Write a c++ program to print table of 10";
     try {
@@ -134,6 +134,6 @@ async function testGemini(){
 // testOpenAiWhisper();
 // testGemini();
 
-
-
 ```
+
+Moreover, you can add error-handling methods to handle the errors according to your requirements.
