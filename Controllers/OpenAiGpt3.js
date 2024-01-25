@@ -1,36 +1,27 @@
-import axios from "axios";
 import BaseModel from "./BaseModel.js";
+import OpenAI from "openai";
 
 
 class OpenAiGPT3 extends BaseModel{
-    constructor(apiKey){
-        super(apiKey, 'gpt-3.5-turbo');
+    constructor(){
+        super('gpt-3.5-turbo');
     }
 
-    async generateResponse(prompt){
+    async generateResponse(prompt, stream=false){
+        const openai = new OpenAI({apiKey: process.env.OPENAI_KEY});
         try{
-            const response = await axios.post(
-                "https://api.openai.com/v1/chat/completions",{
+            const response = await openai.chat.completions.create({
                     model: this.model,
                     messages: [{role:'user' , content: prompt }],
-                    temperature: 0.6,
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${this.apiKey}`,
-                    },
+                    temperature: 0.7,
+                    stream: stream
                 },
             );
-
-            if (!response.data || !response.data.choices || response.data.choices.length === 0) {
-                throw new Error("Invalid response format from OpenAI API");
-            }
-
-            return response.data.choices[0].message.content;
+                
+            return response;
         }
         catch(error){
-            throw new Error(`OpenAI API Error: ${error.response.status}`);
+            throw new Error(`OpenAI API Error: ${error.message}`);
         }
     }
 

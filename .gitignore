@@ -2,3 +2,4 @@ node_modules
 test.js
 Demo.mp3
 speech.mp3
+.env

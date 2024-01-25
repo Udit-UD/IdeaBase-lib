@@ -1,34 +1,25 @@
 import axios from "axios";
 import BaseModel from "./BaseModel.js";
-
+import OpenAI from "openai";
 
 class OpenAiDalle extends BaseModel{
-    constructor(apiKey, noOfImages = 1, imageSize = "1024x1024"){
-        super(apiKey, 'dall-e-2');
-        this.noOfImages = noOfImages;
-        this.imageSize = imageSize;
+    constructor(){
+        super('dall-e-2');
     }
 
-    async generateResponse(prompt){
+    async generateResponse(prompt, noOfImages = 1, imageSize = "1024x1024"){
         try{
-            const response = await axios.post(
-                "https://api.openai.com/v1/images/generations",{
-                    model: this.model,
-                    prompt: prompt,
-                    n: this.noOfImages,
-                    size: this.imageSize
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${this.apiKey}`,
-                    },
-                },
-            );
-            return response.data;
+            const openai = new OpenAI({apiKey: process.env.OPENAI_KEY})
+            const image = await openai.images.generate({
+                model: this.model, 
+                prompt: prompt,
+                n: noOfImages,
+                size: imageSize
+            });
+            return image.data;
         }
         catch(error){
-            throw new Error(`OpenAI API Error: ${error.response.status}`);
+            throw new Error(`OpenAI API Error: ${error.message}`);
         }
     }
 

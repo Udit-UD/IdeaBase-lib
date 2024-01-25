@@ -1,6 +1,5 @@
 class BaseModel {
-    constructor(apiKey, model){
-        this.apiKey = apiKey;
+    constructor(model){
         this.model = model;
     }
     async generateResponse(prompt){

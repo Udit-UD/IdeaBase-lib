@@ -3,13 +3,13 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 
 class Gemini extends BaseModel{
-    constructor(apiKey){
-        super(apiKey, 'gemini-pro');
+    constructor(){
+        super('gemini-pro');
     }
 
     async generateResponse(prompt, stream = false){
         try{
-            const genAI = new GoogleGenerativeAI(this.apiKey);
+            const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
             const model = genAI.getGenerativeModel({model: this.model});
             const generationConfig = {
                 temperature: 0.65,

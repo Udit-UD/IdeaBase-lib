@@ -1,28 +1,20 @@
-import axios from "axios";
 import BaseModel from "./BaseModel.js";
-import fs from "fs";
+import OpenAI from "openai";
 
 
 class OpenAiWhisper extends BaseModel{
-    constructor(apiKey){
-        super(apiKey, 'whisper-1');
+    constructor(){
+        super('whisper-1');
     }
 
     async generateResponse(file){   
         try{
-            const response = await axios.post(
-                "https://api.openai.com/v1/audio/transcriptions",{
-                    file: file,
-                    model: this.model,
-                },
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                        Authorization: `Bearer ${this.apiKey}`,
-                    },
-                },
-            );
-            return response.data.text;
+            const openai = new OpenAI({apiKey: process.env.OPENAI_KEY})
+            const transcription = await openai.audio.transcriptions.create({
+                file: file,
+                model: "whisper-1",
+              });
+            return transcription.text;
         }
         catch(error){
             throw new Error(`OpenAI API Error: ${error.response.status}`);
