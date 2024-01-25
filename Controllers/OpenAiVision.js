@@ -3,7 +3,7 @@ import OpenAI from "openai";
 
 class OpenAiDalle extends BaseModel{
     constructor(){
-        super('dall-e-2');
+        super('gpt-4-vision-preview');
     }
 
     async generateResponse(prompt, noOfImages = 1, imageSize = "1024x1024"){
