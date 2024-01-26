@@ -3,4 +3,6 @@ test.js
 Demo.mp3
 speech.mp3
 init_image.png
+init_image.webp
+mask_image.webp
 .env

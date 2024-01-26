@@ -12,6 +12,8 @@ import StabilityI2I from "./Controllers/Stability/StabilityI2I.js";
 import HfText2Image from "./Controllers/HuggingFace/HfText2Image.js";
 import HfText2Text from "./Controllers/HuggingFace/HfText2Text.js";
 import HfBlenderBot from "./Controllers/HuggingFace/HfBlenderBot.js";
+import StabilityUpscaling from './Controllers/Stability/StabilityUpscale.js';
+import StabilityMasking from './Controllers/Stability/StabilityMasking.js';
 
 dotenv.config();
 
@@ -38,6 +40,10 @@ class Ideaverse {
                 return new StabilityT2I();
             case 'Stability-Img2Img':
                 return new StabilityI2I();
+            case 'Stability-Upscaling':
+                return new StabilityUpscaling();
+            case 'Stability-Masking': 
+                return new StabilityMasking();
             case 'Hf-Text2Img':
                 return new HfText2Image();
             case 'Hf-Mistral':
