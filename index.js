@@ -14,42 +14,60 @@ import HfText2Text from "./Controllers/HuggingFace/HfText2Text.js";
 import HfBlenderBot from "./Controllers/HuggingFace/HfBlenderBot.js";
 import StabilityUpscaling from './Controllers/Stability/StabilityUpscale.js';
 import StabilityMasking from './Controllers/Stability/StabilityMasking.js';
+import HfZephyrl from './Controllers/HuggingFace/HfZephyrl.js';
+import HfSdV1 from './Controllers/HuggingFace/HfSdV1.js';
+import HfLlama2 from './Controllers/HuggingFace/HfLlama2.js';
+import OpenAiVision from './Controllers/OpenAI/OpenAiVision.js';
 
 dotenv.config();
 
 class Ideaverse {
-    static create(modelName) {
+    static create(modelName, apiKey) {
         switch (modelName) {
             case 'OpenAI-GPT-3':
-                return new OpenAiGPT3();
+                return new OpenAiGPT3(apiKey);
             case 'OpenAI-Dalle':
-                return new OpenAiDalle();
+                return new OpenAiDalle(apiKey);
             case 'OpenAI-Whisper':
-                return new OpenAiWhisper();
+                return new OpenAiWhisper(apiKey);
             case 'OpenAI-TTS':
-                return new OpenAiTTS();
+                return new OpenAiTTS(apiKey);
+            case 'OpenAI-gpt-4-vision-preview':
+                return new OpenAiVision(apiKey);
             case 'Gemini':
-                return new Gemini();
+                return new Gemini(apiKey);
             case 'Sd-Voice-Clone':
-                return new SdVoiceCloning();
+                return new SdVoiceCloning(apiKey);
             case 'Sd-Text-To-Voice':
-                return new SdTextToVoice();
+                return new SdTextToVoice(apiKey);
             case 'Sd-Img2Img':
-                return new SdImg2Img();
+                return new SdImg2Img(apiKey);
+            // case 'Sd-Text2Img':                              // Discussion needed!
+            //     return new SdText2Img(apiKey);
             case 'Stability-Text2Img':
-                return new StabilityT2I();
+                return new StabilityT2I(apiKey);
             case 'Stability-Img2Img':
-                return new StabilityI2I();
+                return new StabilityI2I(apiKey);
             case 'Stability-Upscaling':
-                return new StabilityUpscaling();
+                return new StabilityUpscaling(apiKey);
             case 'Stability-Masking': 
-                return new StabilityMasking();
+                return new StabilityMasking(apiKey);
             case 'Hf-Text2Img':
-                return new HfText2Image();
+                return new HfText2Image(apiKey);
             case 'Hf-Mistral':
-                return new HfText2Text();
+                return new HfText2Text(apiKey);
             case 'Hf-BlunderBot': 
-                return new HfBlenderBot();
+                return new HfBlenderBot(apiKey);
+            case 'Hf-Zephyrl':
+                return new HfZephyrl(apiKey);
+            case 'Hf-stable-diffusion-v1-5':
+                return new HfSdV1(apiKey);
+
+                // Integrated but require subscription
+            case 'Hf-Llama-2':
+                return new HfLlama2(apiKey);
+
+                
             default:
                 throw new Error(`Model '${modelName}' is not supported.`);
         }

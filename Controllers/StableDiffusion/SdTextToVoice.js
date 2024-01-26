@@ -2,13 +2,13 @@ import BaseModel from "../BaseModel.js";
 import axios from "axios";
 
 class SdTextToVoice extends BaseModel{
-    constructor(){
-        super("sd-TextToVoice");
+    constructor(apiKey){
+        super(apiKey, "sd-TextToVoice");
     }
     
     async generateResponse(prompt, voice_id){
         const data = {
-            key: process.env.STABLE_DIFF_KEY, 
+            key: this.apiKey, 
             prompt: prompt,
             voice_id: voice_id,
             decoder_iterations: 30,

@@ -3,15 +3,15 @@ import BaseModel from "../BaseModel.js";
 
 
 class StabilityT2I extends BaseModel{
-    constructor(){
-        super("Stability-T2I");
+    constructor(apiKey){
+        super(apiKey, "Stability-T2I");
     }
 
     async generateResponse(prompt, negativeText = "", noOfImages=1){
         try {
             const headers = {
                 Accept: "application/json",
-                Authorization: `Bearer ${process.env.STABILITY_KEY}`
+                Authorization: `Bearer ${this.apiKey}`
             };
     
             const body = {

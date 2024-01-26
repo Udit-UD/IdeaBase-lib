@@ -2,13 +2,13 @@ import BaseModel from "../BaseModel.js";
 import axios from "axios";
 
 class SdText2Img extends BaseModel{
-    constructor(){
-            super("sd-Img2Img");
+    constructor(apiKey){
+            super(apiKey, "sd-Img2Img");
     }
     
     async generateResponse(prompt, noOfImages=1){
         const data = {
-            key: process.env.STABLE_DIFF_KEY, 
+            key: this.apiKey, 
             prompt: prompt,
             negative_prompt: null,
             width: "512",

@@ -3,13 +3,13 @@ import OpenAI from "openai";
 
 
 class OpenAiWhisper extends BaseModel{
-    constructor(){
-        super('whisper-1');
+    constructor(apiKey){
+        super(apiKey, 'whisper-1');
     }
 
     async generateResponse(file){   
         try{
-            const openai = new OpenAI({apiKey: process.env.OPENAI_KEY})
+            const openai = new OpenAI({apiKey: this.apiKey})
             const transcription = await openai.audio.transcriptions.create({
                 file: file,
                 model: "whisper-1",

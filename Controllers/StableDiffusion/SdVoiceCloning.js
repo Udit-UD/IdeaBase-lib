@@ -2,13 +2,13 @@ import BaseModel from "../BaseModel.js";
 import axios from "axios";
 
 class SdVoiceCloning extends BaseModel{
-    constructor(){
-        super("sd-VoiceCloining");
+    constructor(apiKey){
+        super(apiKey, "sd-VoiceCloining");
     }
     
     async generateResponse(prompt, init_audio){
         const data = {
-            key: process.env.STABLE_DIFF_KEY,
+            key: this.apiKey,
             prompt: prompt,
             init_audio: init_audio,
             language: "english",

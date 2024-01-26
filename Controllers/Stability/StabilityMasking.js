@@ -3,8 +3,8 @@ import BaseModel from "../BaseModel.js";
 import FormData from 'form-data';
 
 class StabilityMasking extends BaseModel{
-    constructor(){
-        super("Stability-Masking");
+    constructor(apiKey){
+        super(apiKey, "Stability-Masking");
     }
 
     async generateResponse(prompt, init_image, mask_image, noOfImages){
@@ -20,7 +20,7 @@ class StabilityMasking extends BaseModel{
                 headers: {
                     ...formData.getHeaders(),
                     'Accept': "application/json",
-                    Authorization: `Bearer ${process.env.STABILITY_KEY}`,
+                    Authorization: `Bearer ${this.apiKey}`,
                 }}
             );
 

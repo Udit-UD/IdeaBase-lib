@@ -4,8 +4,8 @@ import FormData from 'form-data';
 
 
 class StabilityUpscaling extends BaseModel{
-    constructor(){
-        super("Stability-T2I");
+    constructor(apiKey){
+        super(apiKey, "Stability-T2I");
     }
 
     async generateResponse(init_image, height="512"){
@@ -18,7 +18,7 @@ class StabilityUpscaling extends BaseModel{
             headers: {
                 ...formData.getHeaders(),
                 'Accept': "application/json",
-                Authorization: `Bearer ${process.env.STABILITY_KEY}`,
+                Authorization: `Bearer ${this.apiKey}`,
             }}
         );
 

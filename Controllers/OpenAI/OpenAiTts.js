@@ -1,12 +1,10 @@
 import axios from "axios";
 import BaseModel from "../BaseModel.js";
-import fs from "fs";
-import path from "path";
 
 
 class OpenAiTTs extends BaseModel{
-    constructor(){
-        super('tts-1');
+    constructor(apiKey){
+        super(apiKey, 'tts-1');
     }
     
     async generateResponse(prompt){
@@ -20,7 +18,7 @@ class OpenAiTTs extends BaseModel{
                 {
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${process.env.OPENAI_KEY}`,
+                        Authorization: `Bearer ${this.apiKey}`,
                     },
                     responseType: 'arraybuffer',
                 },

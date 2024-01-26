@@ -3,8 +3,8 @@ import BaseModel from "../BaseModel.js";
 
 
 class HfBlenderBot extends BaseModel{
-    constructor(){
-        super("Hf-BlenderBot");
+    constructor(apiKey){
+        super(apiKey, "Hf-BlenderBot");
     }
 
     async generateResponse(data){
@@ -13,7 +13,7 @@ class HfBlenderBot extends BaseModel{
                 "https://api-inference.huggingface.co/models/facebook/blenderbot-3B",
                 data, {
                   headers: {
-                    Authorization: `Bearer ${process.env.HUGGING_FACE_KEY}`,
+                    Authorization: `Bearer ${this.apiKey}`,
                     'Content-Type': 'application/json',
                   }
                 }

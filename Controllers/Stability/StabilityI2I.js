@@ -3,8 +3,8 @@ import BaseModel from "../BaseModel.js";
 import FormData from 'form-data';
 
 class StabilityI2I extends BaseModel{
-    constructor(){
-        super("Stability-I2I");
+    constructor(apiKey){
+        super(apiKey, "Stability-I2I");
     }
 
     async generateResponse(prompt, init_image, negativePrompt="", noOfImages=1){
@@ -21,7 +21,7 @@ class StabilityI2I extends BaseModel{
                 headers: {
                     ...formData.getHeaders(),
                     'Accept': "application/json",
-                    Authorization: `Bearer ${process.env.STABILITY_KEY}`,
+                    Authorization: `Bearer ${this.apiKey}`,
                 }}
             );
 

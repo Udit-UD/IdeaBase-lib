@@ -3,12 +3,12 @@ import OpenAI from "openai";
 
 
 class OpenAiGPT3 extends BaseModel{
-    constructor(){
-        super('gpt-3.5-turbo');
+    constructor(apiKey){
+        super(apiKey, 'gpt-3.5-turbo');
     }
 
     async generateResponse(prompt, stream=false){
-        const openai = new OpenAI({apiKey: process.env.OPENAI_KEY});
+        const openai = new OpenAI({apiKey: this.apiKey});
         try{
             const response = await openai.chat.completions.create({
                     model: this.model,

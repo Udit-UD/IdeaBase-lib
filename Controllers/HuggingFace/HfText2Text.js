@@ -3,8 +3,8 @@ import BaseModel from "../BaseModel.js";
 
 
 class HfText2Text extends BaseModel{
-    constructor(){
-        super("Hf-Text2Text");
+    constructor(apiKey){
+        super(apiKey, "Hf-Text2Text");
     }
 
     async generateResponse(data){
@@ -15,7 +15,7 @@ class HfText2Text extends BaseModel{
                 ,
                 {
                   headers: {
-                    Authorization: `Bearer ${process.env.HUGGING_FACE_KEY}`,
+                    Authorization: `Bearer ${this.apiKey}`,
                     'Content-Type': 'application/json',
                   },
                 }

@@ -1,21 +1,32 @@
 import BaseModel from "../BaseModel.js";
 import OpenAI from "openai";
 
-class OpenAiDalle extends BaseModel{
-    constructor(){
-        super('gpt-4-vision-preview');
+class OpenAiVision extends BaseModel{
+    constructor(apiKey){
+        super(apiKey, 'gpt-4-vision-preview');
     }
 
-    async generateResponse(prompt, noOfImages = 1, imageSize = "1024x1024"){
+    async generateResponse(prompt, urlOfImage){
         try{
-            const openai = new OpenAI({apiKey: process.env.OPENAI_KEY})
-            const image = await openai.images.generate({
+            const openai = new OpenAI({apiKey: this.apiKey})
+            const image = await openai.chat.completions.create({
                 model: this.model, 
-                prompt: prompt,
-                n: noOfImages,
-                size: imageSize
+                messages: [
+                    {
+                        role: "user",
+                        content: [
+                          { type: "text", text: prompt },
+                          {
+                            type: "image_url",
+                            image_url: {
+                              "url": urlOfImage,
+                            },
+                          },
+                        ],
+                    },
+                ]
             });
-            return image.data;
+            return image.choices[0];
         }
         catch(error){
             throw new Error(`OpenAI API Error: ${error.message}`);
@@ -25,4 +36,4 @@ class OpenAiDalle extends BaseModel{
 
 }
 
-export default OpenAiDalle;
+export default OpenAiVision;
