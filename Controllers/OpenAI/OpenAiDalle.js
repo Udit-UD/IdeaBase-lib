@@ -1,9 +1,9 @@
-import BaseModel from "./BaseModel.js";
+import BaseModel from "../BaseModel.js";
 import OpenAI from "openai";
 
 class OpenAiDalle extends BaseModel{
     constructor(){
-        super('gpt-4-vision-preview');
+        super('dall-e-2');
     }
 
     async generateResponse(prompt, noOfImages = 1, imageSize = "1024x1024"){

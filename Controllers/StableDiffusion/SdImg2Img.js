@@ -1,4 +1,4 @@
-import BaseModel from "./BaseModel.js";
+import BaseModel from "../BaseModel.js";
 import axios from "axios";
 
 class SdImg2Img extends BaseModel{

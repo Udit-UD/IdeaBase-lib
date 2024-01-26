@@ -1,12 +1,17 @@
-import OpenAiTTS from "./Controllers/OpenAiTts.js";
-import OpenAiDalle from "./Controllers/OpenAiDalle.js";
-import OpenAiWhisper from "./Controllers/OpenAiWhisper.js";
-import OpenAiGPT3 from "./Controllers/OpenAIgpt3.js";
-import Gemini from "./Controllers/Gemini.js";
-import SdVoiceCloning from "./Controllers/SdVoiceCloning.js";
 import dotenv from 'dotenv';
-import SdTextToVoice from "./Controllers/SdTextToVoice.js";
-import SdImg2Img from "./Controllers/SdImg2Img.js";
+import OpenAiTTS from "./Controllers/OpenAI/OpenAiTts.js";
+import OpenAiDalle from "./Controllers/OpenAI/OpenAiDalle.js";
+import OpenAiWhisper from "./Controllers/OpenAI/OpenAiWhisper.js";
+import OpenAiGPT3 from "./Controllers/OpenAI/OpenAiGpt3.js";
+import Gemini from "./Controllers/Gemini/Gemini.js";
+import SdVoiceCloning from "./Controllers/StableDiffusion/SdVoiceCloning.js";
+import SdTextToVoice from "./Controllers/StableDiffusion/SdTextToVoice.js";
+import SdImg2Img from "./Controllers/StableDiffusion/SdImg2Img.js";
+import StabilityT2I from "./Controllers/Stability/StabilityT2I.js";
+import StabilityI2I from "./Controllers/Stability/StabilityI2I.js";
+import HfText2Image from "./Controllers/HuggingFace/HfText2Image.js";
+import HfText2Text from "./Controllers/HuggingFace/HfText2Text.js";
+import HfBlenderBot from "./Controllers/HuggingFace/HfBlenderBot.js";
 
 dotenv.config();
 
@@ -29,6 +34,16 @@ class Ideaverse {
                 return new SdTextToVoice();
             case 'Sd-Img2Img':
                 return new SdImg2Img();
+            case 'Stability-Text2Img':
+                return new StabilityT2I();
+            case 'Stability-Img2Img':
+                return new StabilityI2I();
+            case 'Hf-Text2Img':
+                return new HfText2Image();
+            case 'Hf-Mistral':
+                return new HfText2Text();
+            case 'Hf-BlunderBot': 
+                return new HfBlenderBot();
             default:
                 throw new Error(`Model '${modelName}' is not supported.`);
         }
