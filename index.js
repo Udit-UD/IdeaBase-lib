@@ -3,6 +3,7 @@ import OpenAiTTS from "./Controllers/OpenAI/OpenAiTts.js";
 import OpenAiDalle from "./Controllers/OpenAI/OpenAiDalle.js";
 import OpenAiWhisper from "./Controllers/OpenAI/OpenAiWhisper.js";
 import OpenAiGPT3 from "./Controllers/OpenAI/OpenAiGpt3.js";
+import OpenAiGpt4 from "./Controllers/OpenAI/OpenAiGpt4.js";
 import Gemini from "./Controllers/Gemini/Gemini.js";
 import SdVoiceCloning from "./Controllers/StableDiffusion/SdVoiceCloning.js";
 import SdTextToVoice from "./Controllers/StableDiffusion/SdTextToVoice.js";
@@ -26,6 +27,8 @@ class Ideaverse {
         switch (modelName) {
             case 'OpenAI-GPT-3':
                 return new OpenAiGPT3(apiKey);
+            case 'OpenAI-GPT-4':
+                return new OpenAiGpt4(apiKey);
             case 'OpenAI-Dalle':
                 return new OpenAiDalle(apiKey);
             case 'OpenAI-Whisper':
@@ -63,7 +66,7 @@ class Ideaverse {
             case 'Hf-stable-diffusion-v1-5':
                 return new HfSdV1(apiKey);
 
-                // Integrated but require subscription
+                // Require subscription
             case 'Hf-Llama-2':
                 return new HfLlama2(apiKey);
 

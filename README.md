@@ -28,7 +28,48 @@ To utilize models from the Ideaverse Library, you must obtain an API key for the
 - Access the API section or use the provided link for API access.
 - Generate a new API key by following the provided instructions. Make sure to select the appropriate models and permissions.
 
+- **Stable Diffusion API:**
+- Visit the [Stable Diffusion website](https://stablediffusionapi.com/).
+- Log in to your account or register if you are a new user.
+- Go to dashboard and then API Settings.
+- Generate a new API key by following the provided instructions.
+
+- **Hugging Face API:**
+- Visit the [Hugging Face website](https://huggingface.co/).
+- Log in to your account or register if you are a new user.
+- Go to profile section and navigate to Access Tokens option.
+- Generate a new API Token and use it.
+- Note: You need to buy Hugging Face Pro Key to use premium models like Llama 2 7B.
+
+- **Stability AI API:**
+- Visit the [Stability AI website](https://platform.stability.ai/).
+- Log in to your account or register if you are a new user.
+- Go to profile section and navigate to API Keys option.
+- Create a new API Token and use it.
+
 Once you have obtained the API keys, you can seamlessly integrate them into the Ideaverse Library to use the AI Models.
+
+### Models We Offer
+There are multiple models from multiple platforms that we are providing, you just need to call them and provide your API KEY to use them. List of such models are:
+- 1. Stable Diffusion: Voice Cloning
+- 2. Stable Diffusion: Text to Voice
+- 3. Stable Diffusion: Image to Image
+- 4. OpenAI: GPT-3
+- 5. OpenAI: GPT-4
+- 6. OpenAI: Whisper
+- 7. OpenAI: Dalle 2
+- 8. OpenAI: Text to Speech ("TTS")
+- 9. OpenAI: Vision
+- 10. Hugging Face: Llama 2 7B (Requires Subscription)
+- 11. Hugging Face: Stable-diffusion-v1-5
+- 12. Hugging Face: MidJourney
+- 13. Hugging Face: Mistral
+- 14. Hugging Face: Zephyr
+- 15. Hugging Face: BlenderBot
+- 16. Stability AI: Text to Text
+- 17. Stability AI: Image to Image
+- 18. Stability AI: Image Upscale
+- 19. Stability AI: Image Masking
 
 ### Creating Models with Ideaverse
 Ideaverse simplifies the process of instantiating different AI models. Users can create a model instance by simply calling the model function. Here is the code snippet demonstrating how can you call different functions.
