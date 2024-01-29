@@ -45,8 +45,6 @@ class Ideaverse {
                 return new SdTextToVoice(apiKey);
             case 'Sd-Img2Img':
                 return new SdImg2Img(apiKey);
-            // case 'Sd-Text2Img':                              // Discussion needed!
-            //     return new SdText2Img(apiKey);
             case 'Stability-Text2Img':
                 return new StabilityT2I(apiKey);
             case 'Stability-Img2Img':
